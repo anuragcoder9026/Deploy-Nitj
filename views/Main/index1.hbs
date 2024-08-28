@@ -237,6 +237,7 @@ setInterval(nextSlide, 3000); // Change slide every 3 seconds (adjust as needed)
         if (itr == 5) break;
       }
     }); */
+
     fetch(link3)
     .then(response => response.json())
     .then(data => {
@@ -253,49 +254,31 @@ setInterval(nextSlide, 3000); // Change slide every 3 seconds (adjust as needed)
         else if(data[i].category == "Training and Placement Message")
         tpom = data[i].content
       }
- 
        
        message.innerHTML = ` <div class="w-full flex flex-col items-start">
-        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from <span class="">Director </span></p>
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Director</p>
         <div class="bg-accent w-full lg:w-[300px] h-[1px] lg:h-[3px]"></div>
       </div>
-           <div class="flex gap-5">
-  <div  class=" hidden md:flex w-full min-w-[25%]">
-    <img src="./img/directorPhoto.jpg" alt="Image"  class="w-full rounded-lg" ">
-  </div>
-  <div>    
-          <div class="flex flex-col gap-y-3">
-            <p class="font-normal text-black md:text-[21px] "> Prof. Binod Kumar Kanaujia</p>
-        <p class="font-normal text-gray-800 lg:text-[15px] lg:leading-[27px] text-justify">
-          ${dm}
-        </p>
-        </div>
-      </div>
+      <div>
+       <div class="flex items-start mb-6">
+  <img src="./img/directorPhoto.jpg" alt="Director" class="w-[100px] h-[100px] object-cover rounded-full mr-4 lg:mr-8">
+  <div class="flex-1">
+    <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+      ${dm}
+    </p>
   </div>
 </div>
 
-
-      <div class="w-full flex flex-col items-end">
-        <p class="font2 font-medium text-[28px] lg:text-[32px] ">Message from Head </p>
+      </div>
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Head </p>
         <div class="bg-accent w-full lg:w-[261px] h-[1px] lg:h-[3px]"></div>
       </div>
-
-      <div class="flex flex-row-reverse gap-5">
-  <div  class=" hidden md:flex w-full min-w-[25%]">
-    <img src="./img/headPhoto2.png" alt="Image"  class="w-full h-[232px] rounded-lg" ">
-  </div>
-  <div>    
-          <div class="flex flex-col gap-y-3 items-end">
-            <p class="font-normal text-black md:text-[21px] ">Dr Ajay Gupta</p>
-        <p class="font-normal text-gray-800 lg:text-[15px] lg:leading-[27px] text-justify">
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
           ${hm}
         </p>
-        </div>
       </div>
-  </div>
-</div>
-
-
       <div class="w-full flex flex-col items-start">
         <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Training and Placement</p>
         <div class="bg-accent w-full lg:w-[510px] h-[1px] lg:h-[3px]"></div>

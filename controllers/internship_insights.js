@@ -7,11 +7,12 @@ exports.addInternship_Insight = async (req, res) => {
     req.body?.department === undefined ||
     req.body?.stipend === undefined ||
     req.body?.year === undefined ||
-    req.body?.company === undefined
+    req.body?.company === undefined ||
+    req.body?.image === undefined 
   ) {
     return res.status(400).send("Error: All fields are required");
   }
-
+  console.log(req.body?.image);
   const internship_insight = new Internship_Insight({
     name: req.body?.name,
     course: req.body?.course,
@@ -19,6 +20,7 @@ exports.addInternship_Insight = async (req, res) => {
     stipend: req.body?.stipend,
     year: req.body?.year,
     company: req.body?.company,
+    image: req.body?.image,
   });
 
   internship_insight

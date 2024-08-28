@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Internships</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Poppins";
+    }
+
+    #header {
+      position: sticky;
+      top: 0;
+    }
+
+    #btn-back-to-top {
+      position: fixed;
+      display: none;
+    }
+
+    .courses {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(70, 70, 70, 0.70) 99.11%),url(../img/bg_people.JPG);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+     .tpopeople {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(70, 70, 70, 0.70) 99.11%), url(../img/bg_people.JPG);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .table-container {
+      margin: 2rem 0;
+      padding: 0 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    .view-button {
+      color: #007bff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .view-button:hover {
+      color: #0056b3;
+    }
+    
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.popup-image {
+  max-width: 100%;
+  max-height: 50vh;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.container {
+   width: 100%;
+    text-align: center;
+     margin-top: 75px;
+    margin-bottom: 65px;
+}
+
+.programs {
+  width: 100vw;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spacing between buttons */
+}
+
+.program-item {
+    width:22%;
+    text-align: center;
+    position: relative; /* To position branches and years */
+}
+
+.program-btn:hover {
+    background-color: #0056b3;
+}
+
+.branches-list {
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 0;
+    margin-right:0;
+    position: absolute;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      width: max-content;
+      padding-bottom: 5px;
+}
+
+.years-list {
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 20px; /* Spacing between branches and years */
+    width: fit-content;
+    position: absolute;
+    left: 97%; /* Place years-list to the right of branches-list */
+    top: 0; /* Align with the top of the branches-list */
+     background-color: #fff;
+    border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      width: max-content;
+      padding-bottom: 5px;
+}
+
+.branches-list ul, .years-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.branches-list li, .years-list li {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+    } 
+
+   .branches-list li:hover, .years-list li:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 810px) {
+      .programs{
+        flex-direction:column;
+        align-items: center;
+      }
+      .program-item{
+        width: 85%;
+      }
+    }
+    @media (max-width: 528px) {
+     .branches-list li, .years-list li {
+      font-size: 0.875rem;
+    } 
+    }
+     @media (max-width: 470px) {
+     .branches-list li, .years-list li {
+      font-size: 0.775rem;
+    } 
+    }
+    @media (max-width: 425px) {
+     .branches-list li, .years-list li {
+      font-size: 0.675rem;
+    } 
+    }
+     @media (max-width: 382px) {
+     .branches-list li, .years-list li {
+      font-size: 0.515rem;
+    } 
+    }
+     @media (max-width: 315px) {
+     .branches-list li, .years-list li {
+      font-size: 0.485rem;
+    } 
+    }
+    
+.prgram-btn{
+width: 200px;
+}
+  </style>
+</head>
+
+<body>
+  <div>
+    {{>header}}
+  </div>
+  <br><br><br><br><br><br>
+
+  <!-- Back to top button -->
+  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+    class="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+    id="btn-back-to-top">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-4 h-4" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- Background pic and heading -->
+  <div>
+    <div class="courses flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
+      <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">Internships</p>
+    </div>
+    <nav class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center">
+        <li class="inline-flex items-center">
+          <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+          </a><a href="{{URL}}" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
+        </li>
+        <li aria-current="page">
+          <div class="inline-flex items-center">
+            <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"></i>
+            <a href="{{URL}}/internship_insight" class="text-lg font-medium ml-2">Internships</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+ 
+  <div class="container">
+        <div class="programs">
+            <div class="program-item">
+                <button class="prgram-btn transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('btech')">BTech</button>
+                 <div id="btech-branches" class="branches-list">
+                   <ul>
+                     <ul>
+    <li onclick="toggleYears('btech','Bio Technology')">Bio Technology</li>
+    <li onclick="toggleYears('btech','Chemical Engineering')">Chemical Engineering</li>
+    <li onclick="toggleYears('btech','Civil Engineering')">Civil Engineering</li>
+    <li onclick="toggleYears('btech','Computer Science and Engineering')">Computer Science and Engineering</li>
+    <li onclick="toggleYears('btech','Data Science and Engineering')">Data Science and Engineering</li>
+    <li onclick="toggleYears('btech','Electrical Engineering')">Electrical Engineering</li>
+    <li onclick="toggleYears('btech','Electronics and Communication Engineering')">Electronics and Communication Engineering</li>
+    <li onclick="toggleYears('btech','Electronics and VLSI Engineering')">Electronics and VLSI Engineering</li>
+    <li onclick="toggleYears('btech','Industrial and Production Engineering')">Industrial and Production Engineering</li>
+    <li onclick="toggleYears('btech','Information Technology')">Information Technology</li>
+    <li onclick="toggleYears('btech','Instrumental and Control Engineering')">Instrumental and Control Engineering</li>
+    <li onclick="toggleYears('btech','Mathematics and Computing')">Mathematics and Computing</li>
+    <li onclick="toggleYears('btech','Mechanical Engineering')">Mechanical Engineering</li>
+    <li onclick="toggleYears('btech','Textile Technology')">Textile Technology</li>
+</ul>
+
+
+                    <div id="btech-years" class="years-list">
+                        <ul>
+                            <li onclick="handleYears('Bachelor of Technology (B.Tech)','2022')">2022</li>
+                            <li onclick="handleYears('Bachelor of Technology (B.Tech)','2023')">2023</li>
+                            <li onclick="handleYears('Bachelor of Technology (B.Tech)','2024')">2024</li>
+                            <li onclick="handleYears('Bachelor of Technology (B.Tech)','2025')">2025</li>
+                            <li onclick="handleYears('Bachelor of Technology (B.Tech)','2026')">2026</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <button class="transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('mtech')">MTech</button>
+                <div id="mtech-branches" class="branches-list">
+                    <ul class="list-none p-2">
+                        <li onclick="toggleYears('mtech','Artificial Intelligence')">Artificial Intelligence</li>
+                        <li onclick="toggleYears('mtech','Bio Technology')">Bio Technology</li>
+                        <li onclick="toggleYears('mtech','Chemical Engineering')">Chemical Engineering</li>
+                        <li onclick="toggleYears('mtech','Civil Engineering')">Civil Engineering</li>
+                        <li onclick="toggleYears('mtech','Computer Science and Engineering')">Computer Science and Engineering</li>
+                        <li onclick="toggleYears('mtech','Data Science and Engineering')">Data Science and Engineering</li>
+                        <li onclick="toggleYears('mtech','Electrical Engineering')">Electrical Engineering</li>
+                        <li onclick="toggleYears('mtech','Electronics and Communication Engineering')">Electronics and Communication Engineering</li>
+                        <li onclick="toggleYears('mtech','Information Technology')">Information Technology</li>
+                        <li onclick="toggleYears('mtech','Mechanical Engineering')">Mechanical Engineering</li>
+                    </ul>
+
+                    <div id="mtech-years" class="years-list">
+                        <ul>
+                           <li onclick="handleYears('Master of Technology (M.Tech)','2022')">2022</li>
+                            <li onclick="handleYears('Master of Technology (M.Tech)','2023')">2023</li>
+                            <li onclick="handleYears('Master of Technology (M.Tech)','2024')">2024</li>
+                            <li onclick="handleYears('Master of Technology (M.Tech)','2025')">2025</li>
+                            <li onclick="handleYears('Master of Technology (M.Tech)','2026')">2026</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <button class="transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('mba')">MBA</button>
+                <div id="mba-branches" class="branches-list">
+                   <ul>
+                      <li onclick="toggleYears('mba','Marketing')">Marketing</li>
+                      <li onclick="toggleYears('mba','Finance')">Finance</li>
+                      <li onclick="toggleYears('mba','Human Resources')">Human Resources</li>
+                      <li onclick="toggleYears('mba','Operations')">Operations</li>
+                      <li onclick="toggleYears('mba','IT Management')">IT Management</li>
+                  </ul>
+
+                    <div id="mba-years" class="years-list">
+                        <ul>
+                           <li onclick="handleYears('Master of Business Administration (MBA)','2022')">2022</li>
+                            <li onclick="handleYears('Master of Business Administration (MBA)','2023')">2023</li>
+                            <li onclick="handleYears('Master of Business Administration (MBA)','2024')">2024</li>
+                            <li onclick="handleYears('Master of Business Administration (MBA)','2025')">2025</li>
+                            <li onclick="handleYears('Master of Business Administration (MBA)','2026')">2025</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div id="course-table" class="table-container"></div>
+
+  
+
+ 
+
+<script>
+    async function fetchCourseData(degree, branch,year) {
+      const studentTableContainer = document.getElementById("student-table");
+  studentTableContainer.innerHTML = "";
+      try {
+        const response = await fetch('{{URL}}/internship_insights');
+        const data = await response.json();
+        const filteredData = data.filter(item => item.course === degree && item.department === branch && item.year===Number(year));
+
+        const aggregatedData = filteredData.reduce((acc, item) => {
+          if (!acc[item.company]) {
+            acc[item.company] = {
+              company: item.company,
+              stipend: parseFloat(item.stipend),
+              count: 1
+            };
+          } else {
+            acc[item.company].stipend = Math.max(acc[item.company].stipend, parseFloat(item.stipend));
+            acc[item.company].count += 1;
+          }
+          return acc;
+        }, {});
+
+        const tableData = Object.values(aggregatedData).map(item => [
+          item.company,
+          `${item.stipend}`,
+          item.count,
+          'View'
+        ]);
+        // Hide all branch lists
+    const branchLists = document.querySelectorAll('.branches-list');
+    branchLists.forEach(list => {
+        list.style.display = 'none';
+    });
+
+    // Hide all year lists
+    const yearLists = document.querySelectorAll('.years-list');
+    yearLists.forEach(list => {
+        list.style.display = 'none';
+    });
+        createTable(tableData, filteredData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    } 
+
+    function createTable(data, originalData) {
+      const tableContainer = document.getElementById("course-table");
+      tableContainer.innerHTML = "";
+
+      if (!data || data.length === 0) {
+        tableContainer.innerHTML = "<p>No data available</p>";
+        return;
+      }
+
+      const table = document.createElement("table");
+      table.className = "min-w-full bg-white border border-gray-300";
+
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      const headers = ["Company Name", "Stipend", "Number of Students Placed", "View"];
+      headers.forEach(headerText => {
+        const th = document.createElement("th");
+        th.className = "px-4 py-2 border-b font-semibold text-left";
+        th.appendChild(document.createTextNode(headerText));
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+
+      data.forEach(rowData => {
+        const row = document.createElement("tr");
+
+        rowData.forEach((cellData, index) => {
+          const cell = document.createElement("td");
+          cell.className = "px-4 py-2 border-b";
+          if (index === 3) {
+            const viewButton = document.createElement("button");
+            viewButton.textContent = "View";
+            viewButton.className = "view-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
+            viewButton.onclick = function () {
+              alert("Please scroll for details");
+              createStudentTable(rowData[0], originalData);
+            };
+            cell.appendChild(viewButton);
+          } else {
+            cell.appendChild(document.createTextNode(cellData));
+          }
+          row.appendChild(cell);
+        });
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      tableContainer.appendChild(table);
+    }
+
+    function createStudentTable(company, data) {
+  const studentTableContainer = document.getElementById("student-table");
+  studentTableContainer.innerHTML = "";
+
+  const companyData = data.filter(item => item.company === company).sort((a, b) => b.stipend - a.stipend);
+
+  if (companyData.length === 0) {
+    studentTableContainer.innerHTML = "<p>No student data available</p>";
+    return;
+  }
+
+  const table = document.createElement("table");
+  table.className = "min-w-full bg-white border border-gray-300 mt-4";
+
+  // Create table header
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  const headers = ["Company", "Branch", "Student Name", "Stipend", "Year", "View"];
+  headers.forEach(headerText => {
+    const th = document.createElement("th");
+    th.className = "px-4 py-2 border-b font-semibold text-left bg-gray-200";
+    th.appendChild(document.createTextNode(headerText));
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  // Create table body
+  const tbody = document.createElement("tbody");
+
+  companyData.forEach(student => {
+    const row = document.createElement("tr");
+
+    const cellCompany = document.createElement("td");
+    cellCompany.className = "px-4 py-2 border-b";
+    cellCompany.appendChild(document.createTextNode(student.company));
+    row.appendChild(cellCompany);
+
+    const cellBranch = document.createElement("td");
+    cellBranch.className = "px-4 py-2 border-b";
+    cellBranch.appendChild(document.createTextNode(student.department));
+    row.appendChild(cellBranch);
+
+    const cellName = document.createElement("td");
+    cellName.className = "px-4 py-2 border-b";
+    cellName.appendChild(document.createTextNode(student.name));
+    row.appendChild(cellName);
+
+    const cellPackage = document.createElement("td");
+    cellPackage.className = "px-4 py-2 border-b";
+    cellPackage.appendChild(document.createTextNode(`${student.stipend} `));
+    row.appendChild(cellPackage);
+
+    const cellYear = document.createElement("td");
+    cellYear.className = "px-4 py-2 border-b";
+    cellYear.appendChild(document.createTextNode(student.year));
+    row.appendChild(cellYear);
+
+    const cellView = document.createElement("td");
+    cellView.className = "px-4 py-2 border-b";
+    const viewButton = document.createElement("button");
+    viewButton.textContent = "View";
+    viewButton.className = "view-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
+    viewButton.onclick = function () {
+      showImagePopup(student.image); // Assuming student.image contains the image URL
+    };
+    cellView.appendChild(viewButton);
+    row.appendChild(cellView);
+
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(tbody);
+  studentTableContainer.appendChild(table);
+}
+
+function showImagePopup(imageUrl) {
+  const popup = document.createElement("div");
+  popup.className = "popup-overlay";
+  
+  const popupContent = document.createElement("div");
+  popupContent.className = "popup-content";
+  
+  const img = document.createElement("img");
+  img.src = imageUrl;
+  img.className = "popup-image";
+  
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Close";
+  closeButton.className = "popup-close";
+  closeButton.onclick = () => document.body.removeChild(popup);
+  
+  popupContent.appendChild(img);
+  popupContent.appendChild(closeButton);
+  popup.appendChild(popupContent);
+  
+  document.body.appendChild(popup);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', (event) => {
+        const programItems = document.querySelectorAll('.program-item');
+        programItems.forEach(item => {
+            const branchList = item.querySelector('.branches-list');
+            const yearList = item.querySelector('.years-list');
+
+            // Check if the click was outside of the program item, branch list, and year list
+            if (!item.contains(event.target) && !branchList.contains(event.target) && !yearList.contains(event.target)) {
+                // Hide all branch lists
+                branchList.style.display = 'none';
+                // Hide all year lists
+                yearList.style.display = 'none';
+            }
+        });
+    });
+});
+
+function toggleBranches(program) {
+    // Hide all branch lists
+    const branchLists = document.querySelectorAll('.branches-list');
+    branchLists.forEach(list => {
+        list.style.display = 'none';
+    });
+
+    // Hide all year lists
+    const yearLists = document.querySelectorAll('.years-list');
+    yearLists.forEach(list => {
+        list.style.display = 'none';
+    });
+
+    // Show the selected branch list
+    const branchList = document.getElementById(`${program}-branches`);
+    branchList.style.display = 'block';
+
+    // Hide any previously shown years lists
+    const yearContainer = document.getElementById(`${program}-years`);
+    if (yearContainer) {
+        yearContainer.style.display = 'none';
+    }
+}
+let branch="";
+function toggleYears(program,brch) {
+    branch=brch;
+    const yearContainer = document.getElementById(`${program}-years`);
+    if (yearContainer.style.display === 'block') {
+        yearContainer.style.display = 'none';
+    } else {
+        yearContainer.style.display = 'block';
+    }
+}
+function handleYears(degree,year){
+   fetchCourseData(degree, branch,year);
+}
+</script>
+
+<div id="course-table"></div>
+<div id="student-table"></div>
+
+<div>
+    {{>footer}}
+  </div>
+
+</body>
+
+</html>

@@ -167,35 +167,49 @@
        innerHTMLH = str1 + str2 + str3;
     })
 
-  function facultyClick() {
-    let pro_link = `{{URL}}/People/Faculty`
-    fetch(pro_link)
-      .then(response => response.json())
-      .then(data => {
-        content.innerHTML = innerHTMLD + innerHTMLH;
+ function facultyClick() {
+  let pro_link = `{{URL}}/People/Faculty`;
+  fetch(pro_link)
+    .then(response => response.json())
+    .then(data => {
+      // Define the desired order of faculty names
+      const desiredOrder = [
+        "Dr Ajay Gupta",
+        "Dr Om Prakash Verma",
+        "Mr Kamaljit",
+        "Mr Rohit Rana",
+        "Dr Sivaraj R",
+        "Dr Asutosh Kar",
+        "Mrs Harsh Malhotra"
+      ];
 
-        let str1 = "";
-        let str2 = "";
-        let str3 = "</div>";
+      // Sort data based on the desired order
+      data.sort((a, b) => desiredOrder.indexOf(a.name) - desiredOrder.indexOf(b.name));
 
-        str1 += `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 mx-auto w-[90%] my-5" style = "margin-top: 150px;">`;
-        for (let i = 0; i < data.length; i++) {
-          str2 += `<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md my-auto p-4">
-            <div class="flex flex-col items-center pb-2 space-y-1">
-                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="${data[i].link}" alt="image">
-                <h5 class="mb-1 text-xl font-medium text-gray-900">${data[i].name}</h5>
-                <p class="text-sm text-gray-500">${data[i].department}</p>
-                <p class="text-sm text-gray-500">${data[i].designation}</p>
-                <div class="flex flex-col lg:flex-row items-center w-[80%] justify-between">
-                  <span class="text-lg font2 text-sky-500">${data[i].mobileno}</span>
-                  <span class="text-lg font2 max-w-[70%] text-sky-500">${data[i].email}</span>
-                </div>
+      // Construct the HTML
+      let str1 = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 mx-auto w-[90%] my-5" style="margin-top: 150px;">`;
+      let str2 = "";
+      let str3 = "</div>";
+
+      for (let i = 0; i < data.length; i++) {
+        str2 += `<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md my-auto p-4">
+          <div class="flex flex-col items-center pb-2 space-y-1">
+            <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="${data[i].link}" alt="image">
+            <h5 class="mb-1 text-xl font-medium text-gray-900">${data[i].name}</h5>
+            <p class="text-sm text-gray-500">${data[i].department}</p>
+            <p class="text-sm text-gray-500">${data[i].designation}</p>
+            <div class="flex flex-col lg:flex-row items-center w-[80%] justify-between">
+              <span class="text-lg font2 text-sky-500">${data[i].mobileno}</span>
+              <span class="text-lg font2 max-w-[70%] text-sky-500">${data[i].email}</span>
             </div>
-          </div>`;
-        }
-        content.innerHTML += str1 + str2 + str3;
-      })
-  }
+          </div>
+        </div>`;
+      }
+
+      content.innerHTML = innerHTMLD + innerHTMLH + str1 + str2 + str3;
+    });
+}
+
   function studentClick() {
     let pro_link = `{{URL}}/People/Student`
     fetch(pro_link)

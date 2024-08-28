@@ -100,9 +100,8 @@
   </div>
 
   <div class="grid grid-cols-2 m-[5%] lg:grid-cols-4 gap-8 max-w-4xl lg:mx-auto">
-    <div
-      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
-      onclick="insightClick()" id="insight">
+    <a href="/courses"  class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+       >
       <div class="flex flex-col space-y-4 items-center justify-center">
         <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
           style="font-size: 48px">
@@ -111,7 +110,7 @@
           Insights
         </p>
       </div>
-    </div>
+    </a>
     <div
       class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
       onclick="statsClick()">
@@ -166,7 +165,7 @@
   const content = document.getElementById("content");
 
   function processClick() {
-    let pro_link = `{{URL}}/Processes/Placement Process`;
+    let pro_link = {{URL}}/Processes/Placement Process;
     fetch(pro_link)
       .then((response) => response.json())
       .then((data) => {
@@ -183,7 +182,7 @@
   }
 
   function policyClick() {
-    const p_link = `{{URL}}/Policies/Placement Policy`;
+    const p_link = {{URL}}/Policies/Placement Policy;
     fetch(p_link)
       .then((response) => response.json())
       .then((data) => {
@@ -198,25 +197,27 @@
       .getElementById("come_here")
       .scrollIntoView({ behavior: "smooth" });
   }
-
-  function insightClick() {
+{{!-- function insightClick(){
+  window.location.href = '/coursers';
+} --}}
+  {{!-- function insightClick() {
     const content1 = document.getElementById("content");
-    const link1 = `{{URL}}/Placement_Insights/`;
-    const link2 = `{{URL}}/Placement_Insights_Img/`;
+    const link1 = {{URL}}/Placement_Insights/;
+    const link2 = {{URL}}/Placement_Insights_Img/;
     let innerHTML = "";
     fetch(link2)
       .then((response) => response.json())
       .then(async (data) => {
          console.log(data)
-        innerHTML += `<div class="flex h-full"><div class="w-3/4 p-4">`
+        innerHTML += <div class="flex h-full"><div class="w-3/4 p-4">
         innerHTML += `
         <div class ="image-grid">`
         for(let i = 0; i < data.length; i++) {
           if(data[i].category == "pi_images")
-          innerHTML += `<img src=${data[i].link} alt="Image">`
+          innerHTML += <img src=${data[i].link} alt="Image">
         }
 
-        innerHTML += `</div>`
+        innerHTML += </div>
       });
       
        
@@ -224,8 +225,8 @@
       .then((response) => response.json())
       .then(async (data) => {
         console.log(data)
-        innerHTML += `</div><div class="w-1/4 h-screen p-4 overflow-y-auto flex justify-end">`
-        let str1 = `<div class="mx-auto">`;
+        innerHTML += </div><div class="w-1/4 h-screen p-4 overflow-y-auto flex justify-end">
+        let str1 = <div class="mx-auto">;
         let str2 = "";
         let i =0
           for (  i = 0; i < data.length-1; i++) {
@@ -235,25 +236,25 @@
             `;
           }
 
-        let str3 = `<p style="border: 2px solid rgb(55, 141, 246);  padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p></div>`;
+        let str3 = <p style="border: 2px solid rgb(55, 141, 246);  padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p></div>;
         innerHTML += str1 + str2 + str3;
         innerHTML +="</div></div>"
         content1.innerHTML = innerHTML;
         console.log(innerHTML)
       });
        
-  }
+  } --}}
     
     
     
 
   function statsClick() {
-    const link = `{{URL}}/Placement_Stats/`;
+    const link = {{URL}}/Placement_Stats/;
     fetch(link)
       .then((response) => response.json())
       .then((data) => {
         content.innerHTML = "";
-        let str1 = `<div class="grid grid-cols-1 m-[5%] lg:grid-cols-2 gap-14 max-w-7xl lg:mx-auto">`;
+        let str1 = <div class="grid grid-cols-1 m-[5%] lg:grid-cols-2 gap-14 max-w-7xl lg:mx-auto">;
         let str2 = "";
 
         let cnt = 0;
@@ -271,7 +272,7 @@
           if (cnt == 10) break;
         }
 
-        let str3 = `</div>`;
+        let str3 = </div>;
         content.innerHTML = str1 + str2 + str3;
       });
 

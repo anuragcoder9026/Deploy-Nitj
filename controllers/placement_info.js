@@ -1,35 +1,37 @@
-const Placement_Insight = require("./../models/placement_insights");
+const Placement_Info = require("./../models/placemnet_info");
 
-exports.addPlacement_Insight = async (req, res) => {
+exports.addPlacement_Info = async (req, res) => {
   if (
     req.body?.name === undefined ||
     req.body?.course === undefined ||
     req.body?.department === undefined ||
     req.body?.package === undefined ||
-    req.body?.year === undefined ||
-    req.body?.company === undefined ||
-    req.body?.image === undefined 
+    req.body?.company === undefined||
+    req.body?.roll === undefined|| 
+    req.body?.batch === undefined|| 
+    req.body?.image === undefined
   ) {
     return res.status(400).send("Error: All fields are required");
   }
 
-  const placement_insight = new Placement_Insight({
+  const placement_info = new Placement_Info({
     name: req.body?.name,
     course: req.body?.course,
     department: req.body?.department,
     package: req.body?.package,
-    year: req.body?.year,
+    batch: req.body?.batch,
+    roll: req.body?.roll,
     company: req.body?.company,
-    image:req.body?.image
+    image: req.body?.image,
   });
 
-  placement_insight
+  placement_info
     .save()
-    .then((placement_insight) => res.status(200).send(placement_insight))
+    .then((placement_info) => res.status(200).send(placement_info))
     .catch((err) => res.status(400).send("Error: " + err));
 };
 
-exports.getPlacement_Insight = async (req, res) => {
+exports.getPlacement_Info = async (req, res) => {
   if (req.query.id !== undefined) {
     Placement_Insight.find({ _id: req.query.id })
       .then((placement_insight) => res.status(200).send(placement_insight))

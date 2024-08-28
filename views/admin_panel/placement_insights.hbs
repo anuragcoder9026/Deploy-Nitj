@@ -339,6 +339,11 @@
                                             <input class="form-control" placeholder="Enter Company" id="addcompany"
                                                 name="company" />
                                         </div>
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input class="form-control" placeholder="Enter Student Image Link" id="addImage"
+                                                name="image" />
+                                        </div>
 
                                         <button type="submit" name="action" value="add_menu" class="btn btn-default">
                                             Insert
@@ -598,6 +603,7 @@
             const package = document.getElementById("addpackage").value;
             const year = document.getElementById("addyear").value;
             const company = document.getElementById("addcompany").value;
+            const image=document.getElementById("addImage").value;
 
             if (
                 course == "" ||
@@ -605,7 +611,8 @@
                 department == "" ||
                 package == "" ||
                 year == "" ||
-                company == ""
+                company == "" ||
+                image==""
             ) {
                 alert("Please enter all fields");
                 return;
@@ -619,6 +626,7 @@
                     package: package,
                     year: year,
                     company: company,
+                    image:image
                 })
                 .then((response) => {
                     console.log(response);
